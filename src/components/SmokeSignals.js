@@ -23,13 +23,17 @@ export default class SmokeSignals extends Component {
 		)
 	};
 
+	onClickItem(smokeSignal) {
+		this.props.openSmokeSignal(smokeSignal)
+	}
+
 	getSmokeSignals(smokeSignals) {
 		console.log(smokeSignals)
 		return (
     	<ul className="list">
     		{smokeSignals.map((smokeSignal, i) => {
     			return (
-    				<li className="listItem" key={i} onClick={this.props.openSmokeSignal.bind(null, smokeSignal)}>
+    				<li className="listItem" key={i} onClick={this.onClickItem.bind(this, smokeSignal)}>
 		    			<span className="listItemTitle">{smokeSignal.title}</span>
 		    			<span className="listItemDescription">
 		    			{smokeSignal.description}

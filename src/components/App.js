@@ -24,14 +24,13 @@ export class App extends Component {
 		}
 	};
 
-	openSmokeSignal(smokeSignal) {
+	openSmokeSignal = (smokeSignal) => {
 		this.setState({
 			selectedSmokeSignal: smokeSignal
 		})
-	}
+	};
 
 	render() {
-		console.log(this.state.selectedSmokeSignal)
 		return (
 			<div>
 				<div className="col s12 m2 backgroundCon">

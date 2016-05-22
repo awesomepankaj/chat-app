@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 export default class SmokeSignal extends Component {
 
@@ -6,9 +7,16 @@ export default class SmokeSignal extends Component {
 		console.log(this.props.selectedSmokeSignal)
 		return (
 			<div className="smokeSignal">
-				<div>
-					<h4 className="welcome-text">Welcome to Lifemaker</h4>
-				</div>
+				{_.isEmpty(this.props.selectedSmokeSignal) && 
+					<div>
+						<h4 className="welcome-text">Welcome to Lifemaker</h4>
+					</div>
+					||
+					<div>
+						<p className="listItemTitle">{this.props.selectedSmokeSignal.title}</p>
+						<p className="listItemDescription">{this.props.selectedSmokeSignal.description}</p>
+					</div>
+				}
 			</div>
 		)
 	}

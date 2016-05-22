@@ -25,7 +25,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loaders: ['babel', 'babel-loader'],
         include: path.join(__dirname, 'src')
       },
       { 
