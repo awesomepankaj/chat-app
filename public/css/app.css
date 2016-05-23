@@ -1,6 +1,9 @@
 body {
 	background-image: linear-gradient(to bottom,#dddbd1,#d2dbdc);
 }
+::-webkit-input-placeholder {
+	color: #999;
+}
 .backgroundCon {
   height: 120px;
   background: #009688;
@@ -25,8 +28,8 @@ body {
 	background-color: #F7F9FA;
 	width: 50%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 .listItem {
   display: flex;
@@ -68,9 +71,74 @@ body {
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   background: none;
 }
+.itemDescription {
+	font-size: 14px;
+  line-height: 18px;
+  height: 65px;
+  margin: 4px 0px 0px;
+  color: rgba(0, 0, 0, 0.541176);
+  display: block;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+} 
+.createSmokeSignal {
+	position: absolute;
+	bottom: 55px;
+  left: 496px;
+}
+.commentBox {
+  width: 49%;
+  position: absolute;
+  bottom: -20px;
+}
+.smokeSignalHeader {
+  height: 3em;
+  width: 100%;
+  border-bottom: 1px solid #DCDBD2;
+  background-color: #D4DBDA;
+}
 .list {
 	/*border-right: 1px solid #F4F4F4;
 	border-left: 1px solid #F4F4F4;
 	border-bottom: 1px solid #F4F4F4;
 	*/
+}
+.smokeSignalContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+} 
+.center-content {
+	display: flex;
+	align-items: center;	
+}
+.usernameCont {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;	 
+  cursor: pointer;
+}
+.usernameCont:hover {
+	background-color: #F7F9FA;
+}
+.smokeType {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+.smokeCreateContent {
+	display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: center;
+}
+.smokeType:hover {
+	opacity: 0.9 !important;
 }
