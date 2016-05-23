@@ -142,3 +142,22 @@ body {
 .smokeType:hover {
 	opacity: 0.9 !important;
 }
+#createSmokeScreen1 {
+	transform: translateX(-0px);
+	transition: all 0.5s ease;
+}
+#createSmokeScreen2, #createSmokeScreen3 {
+	display: none;
+	transform: translateX(1000px);
+	transition: all 0.5s ease;
+}
+.hideSmokeScreen {
+	display: none;
+	transform: translateX(-1000px);
+	transition: all 0.5s ease;
+}
+.showSmokeScreen {
+	display: block !important;
+	transform: translateX(0px) !important;
+	transition: all 0.5s ease;
+}

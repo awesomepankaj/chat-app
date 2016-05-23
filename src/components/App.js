@@ -50,7 +50,8 @@ export class App extends Component {
 				title: 'Call-in',
 				description: 'Gather people eg. for talks, demos, tribevibe or a ritual by the river',
 				bgColor: 'rgb(150, 131, 29)'
-			}]
+			}],
+			screen: 1,
 		}
 	};
 
@@ -69,6 +70,20 @@ export class App extends Component {
 			}
 		})
 		this.forceUpdate()
+	};
+
+
+	showNextScreen = () => {
+		if(this.state.screen == 3) {
+			//document.getElementById('modal1').closeModal()
+			$('#modal1').closeModal();
+		} else {
+			document.getElementById("createSmokeScreen" + this.state.screen).className = "hideSmokeScreen"
+			document.getElementById("createSmokeScreen" + (this.state.screen + 1)).className = "showSmokeScreen"
+			this.setState({
+				screen: this.state.screen + 1
+			})
+		}
 	};
 
 	render() {
@@ -94,27 +109,35 @@ export class App extends Component {
 				  </div>
 				  <div id="modal1" className="modal">
 				    <div className="modal-content">
-				    	<p className="listItemTitle">Select SmokeSignal Type</p>
-				    	<div className="row">
-				    		{this.state.smokeTypes.map((smokeType, i) => {
-				    			let opacity = this.state.blurTypes[smokeType.id] && 0.6 || 1
-				    			return (
-						    		<div className="smokeType col s6" key={i} style={{backgroundColor: smokeType.bgColor, opacity: opacity}} onClick={this.onSelectType.bind(this, smokeType.id)}>
-						    			<p className="listItemTitle">{smokeType.title}</p>
-						    			<p className="itemDescription">{smokeType.description}</p>
-						    		</div>
-				    			)	
-				    		})}
-				    	</div> 
-				    	<div className="smokeCreateContent" style={{marginTop: 30}}>
+				    	<div id="createSmokeScreen1">
+					    	<p className="listItemTitle">Select SmokeSignal Type</p>
+					    	<div className="row">
+					    		{this.state.smokeTypes.map((smokeType, i) => {
+					    			let opacity = this.state.blurTypes[smokeType.id] && 0.6 || 1
+					    			return (
+							    		<div className="smokeType col s6" key={i} style={{backgroundColor: smokeType.bgColor, opacity: opacity}} onClick={this.onSelectType.bind(this, smokeType.id)}>
+							    			<p className="listItemTitle">{smokeType.title}</p>
+							    			<p className="itemDescription">{smokeType.description}</p>
+							    		</div>
+					    			)	
+					    		})}
+					    	</div> 
+					    </div>
+				    	<div className="smokeCreateContent" style={{marginTop: 30}} id="createSmokeScreen2">
 				    		<p className="listItemTitle">SmokeSignal Message</p>
+				    		<div className="input-field col s12">
+				          <textarea id="smokeSignalMessage" className="materialize-textarea" placeholder="Type Here..."></textarea>
+				        </div>		
+				    	</div>
+				    	<div className="smokeCreateContent" style={{marginTop: 30}} id="createSmokeScreen3">
+				    		<p className="listItemTitle">SmokeSignal Message Hiiiiii</p>
 				    		<div className="input-field col s12">
 				          <textarea id="smokeSignalMessage" className="materialize-textarea" placeholder="Type Here..."></textarea>
 				        </div>		
 				    	</div>
 				    </div>
 				    <div className="modal-footer">
-				      <a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Next</a>
+				      <a href="#!" id="submitSmokeSignal" onClick={this.showNextScreen} className="modal-action waves-effect waves-green btn-flat">Next</a>
 				    </div>
 				  </div>
 			  </div>
