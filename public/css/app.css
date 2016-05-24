@@ -1,24 +1,40 @@
 body {
-	background-image: linear-gradient(to bottom,#dddbd1,#d2dbdc);
+	background: #DADBD3;
+	margin: 0;
+	font-size: 16px;
+  font-weight: inherit;
+  color: rgba(0, 0, 0, 0.870588);
+  line-height: 16px;
 }
 ::-webkit-input-placeholder {
 	color: #999;
+}
+.headline {
+  font-size: 24px;
+  padding-top: 16px;
+  margin-bottom: 12px;
+  font-weight: 400;
 }
 .backgroundCon {
   height: 120px;
   background: #009688;
 }
+
 .appCont {
+	background: white;
   position: absolute;
   left: 5em;
   right: 5em;
-  top: 49px;
+  top: 50px;
+  bottom: 50px;
 }
+/*
 .smokeSignalsCont {
 	display: flex;
   width: 100%;
   height: 100%;
 }
+*/
 .smokeSignals {
 	width: 50%;
   box-sizing: border-box;
@@ -31,6 +47,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+/*
 .listItem {
   display: flex;
   flex-direction: column;
@@ -98,10 +115,9 @@ body {
   background-color: #D4DBDA;
 }
 .list {
-	/*border-right: 1px solid #F4F4F4;
+	border-right: 1px solid #F4F4F4;
 	border-left: 1px solid #F4F4F4;
 	border-bottom: 1px solid #F4F4F4;
-	*/
 }
 .smokeSignalContent {
 	display: flex;
@@ -136,7 +152,7 @@ body {
 .smokeCreateContent {
 	display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center; 
   text-align: center;
 }
 .smokeType:hover {
@@ -160,4 +176,4 @@ body {
 	display: block !important;
 	transform: translateX(0px) !important;
 	transition: all 0.5s ease;
-}
+}*/

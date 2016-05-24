@@ -1,31 +1,176 @@
 import React, { Component } from 'react';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import Subheader from 'material-ui/Subheader';
+import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
+
+import ActionHome from 'material-ui/svg-icons/action/account-circle';
+
 
 export default class SmokeSignals extends Component {
 
+	constructor(props) {
+    super(props);
+    this.state = {
+      value: 'b',
+    };
+  }
+
+  handleChange = (value) => {
+    this.setState({
+      value: value,
+    });
+  };
+
+
 	render() {
 		return (
-			<div style={{width: '50%'}} className="smokeSignals">
-				<div className="smokeSignalHeader center-content">
-					<div className="usernameCont avatar">
-						<img style={{maxHeight: 40}} src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xtf1/v/t1.0-9/12642806_521596858010280_1419475641188069942_n.jpg?oh=e65dfd45a83b1b5e8527717438d89dac&oe=57D80912&__gda__=1474261065_4c7334dc34454498689f56da78c60ef2" alt="" className="circle responsive-img"/>
-      			<span className="title" style={{paddingLeft: 10}}>Pankaj Thakur</span>	
-					</div>
+			<div style={{width: '50%', height: '100%'}} className="smokeSignals">
+				<div className="smokeSignalHeader">
+					<IconButton tooltip="User">
+						<ActionHome />
+    			</IconButton>	
 				</div>
-				<div className="row">
-			    <div className="col s12" style={{padding: 0}}>
-			      <ul className="tabs">
-			        <li className="tab col s3"><a className="active" href="#forMe">For Me</a></li>
-			        <li className="tab col s3"><a href="#forAll">For All</a></li>
-			      </ul>
-			    </div>
-			    <div id="forMe" className="col s12" style={{padding: 0}}>
-			    {this.getSmokeSignals(this.props.smokeSignals)}
-			    </div>
-    			<div id="forAll" className="col s12" style={{padding: 0}}>
-    			{this.getSmokeSignals(this.props.smokeSignals)}
-    			</div>
-			  </div>
-			  
+				<Tabs
+	        value={this.state.value}
+	        onChange={this.handleChange}
+	      >
+	        <Tab label="For Me" value="a" style={{height: '100%'}}>
+	        	<List style={{height: '25em', overflowY: 'auto', marginBottom: 24}}>
+			        <Subheader>Today</Subheader>
+			        <ListItem
+			          leftAvatar={<Avatar>S</Avatar>}
+			          primaryText="Brunch this weekend?"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Brendan Lim</span> --
+			              I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>P</Avatar>}
+			          primaryText={
+			            <p>Summer BBQ&nbsp;&nbsp;<span style={{color: lightBlack}}>4</span></p>
+			          }
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>to me, Scott, Jennifer</span> --
+			              Wish I could come, but I&apos;m out of town this weekend.
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>A</Avatar>}
+			          primaryText="Oui oui"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Grace Ng</span> --
+			              Do you have Paris recommendations? Have you ever been?
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>S</Avatar>}
+			          primaryText="Birdthday gift"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Kerem Suer</span> --
+			              Do you have any ideas what we can get Heidi for her birthday? How about a pony?
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>L</Avatar>}
+			          primaryText="Recipe to try"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Raquel Parrado</span> --
+			              We should eat this: grated squash. Corn and tomatillo tacos.
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			      </List>
+	        </Tab>
+	        <Tab label="For All" value="b">
+	        	<List style={{height: '25em', overflowY: 'auto', marginBottom: 24}}>
+			        <Subheader>Smoke Signals</Subheader>
+			        <ListItem
+			          leftAvatar={<Avatar>S</Avatar>}
+			          primaryText="Brunch this weekend?"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Brendan Lim</span> --
+			              I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>P</Avatar>}
+			          primaryText={
+			            <p>Summer BBQ&nbsp;&nbsp;<span style={{color: lightBlack}}>4</span></p>
+			          }
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>to me, Scott, Jennifer</span> --
+			              Wish I could come, but I&apos;m out of town this weekend.
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>A</Avatar>}
+			          primaryText="Oui oui"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Grace Ng</span> --
+			              Do you have Paris recommendations? Have you ever been?
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>S</Avatar>}
+			          primaryText="Birdthday gift"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Kerem Suer</span> --
+			              Do you have any ideas what we can get Heidi for her birthday? How about a pony?
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			        <Divider inset={true} />
+			        <ListItem
+			          leftAvatar={<Avatar>L</Avatar>}
+			          primaryText="Recipe to try"
+			          secondaryText={
+			            <p>
+			              <span style={{color: darkBlack}}>Raquel Parrado</span> --
+			              We should eat this: grated squash. Corn and tomatillo tacos.
+			            </p>
+			          }
+			          secondaryTextLines={2}
+			        />
+			      </List>
+	        </Tab>
+	      </Tabs>		  
 			</div>
 		)
 	};
@@ -52,5 +197,3 @@ export default class SmokeSignals extends Component {
 		)
 	}
 }
-
-

@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
+import RaisedButton from 'material-ui/RaisedButton';
 
 import SmokeSignals from './SmokeSignals'
 import SmokeSignal from './SmokeSignal'
 
-export class App extends Component {
+
+export class Home extends Component {
 
 	constructor(props) {
 		super(props)
@@ -91,55 +93,9 @@ export class App extends Component {
 			<div>
 				<div className="col s12 m2 backgroundCon">
     		</div>
-    		<div className="appCont">
-	    		<div>
-		    		<div className="row">
-				      <div className="col s12 m12">
-				        <div className="card-panel white" style={{height: '580px', padding: 0}}>
-				        	<div className="smokeSignalsCont">
-				        		<SmokeSignals smokeSignals={this.state.smokeSignals} openSmokeSignal={this.openSmokeSignal}/>
-				        		<SmokeSignal selectedSmokeSignal={this.state.selectedSmokeSignal}/>
-				        	</div>
-				        </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div className="createSmokeSignal">
-				  	<a href="#modal1" className="btn-floating btn-large waves-effect waves-light red modal-trigger"><i className="material-icons">add</i></a>
-				  </div>
-				  <div id="modal1" className="modal">
-				    <div className="modal-content">
-				    	<div id="createSmokeScreen1">
-					    	<p className="listItemTitle">Select SmokeSignal Type</p>
-					    	<div className="row">
-					    		{this.state.smokeTypes.map((smokeType, i) => {
-					    			let opacity = this.state.blurTypes[smokeType.id] && 0.6 || 1
-					    			return (
-							    		<div className="smokeType col s6" key={i} style={{backgroundColor: smokeType.bgColor, opacity: opacity}} onClick={this.onSelectType.bind(this, smokeType.id)}>
-							    			<p className="listItemTitle">{smokeType.title}</p>
-							    			<p className="itemDescription">{smokeType.description}</p>
-							    		</div>
-					    			)	
-					    		})}
-					    	</div> 
-					    </div>
-				    	<div className="smokeCreateContent" style={{marginTop: 30}} id="createSmokeScreen2">
-				    		<p className="listItemTitle">SmokeSignal Message</p>
-				    		<div className="input-field col s12">
-				          <textarea id="smokeSignalMessage" className="materialize-textarea" placeholder="Type Here..."></textarea>
-				        </div>		
-				    	</div>
-				    	<div className="smokeCreateContent" style={{marginTop: 30}} id="createSmokeScreen3">
-				    		<p className="listItemTitle">SmokeSignal Message Hiiiiii</p>
-				    		<div className="input-field col s12">
-				          <textarea id="smokeSignalMessage" className="materialize-textarea" placeholder="Type Here..."></textarea>
-				        </div>		
-				    	</div>
-				    </div>
-				    <div className="modal-footer">
-				      <a href="#!" id="submitSmokeSignal" onClick={this.showNextScreen} className="modal-action waves-effect waves-green btn-flat">Next</a>
-				    </div>
-				  </div>
+    		<div className="appCont">	
+      		<SmokeSignals smokeSignals={this.state.smokeSignals} openSmokeSignal={this.openSmokeSignal}/>
+      		<SmokeSignal selectedSmokeSignal={this.state.selectedSmokeSignal}/>
 			  </div>
 			</div>
 		)
