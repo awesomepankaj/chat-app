@@ -15,12 +15,12 @@ export class Home extends Component {
 			selectedSmokeSignal: {},
 			smokeSignals: [{
 				id: 1,
-				title: 'Life is Comming',
+				title: 'Pankaj',
 				description: 'This is the life that I remembered after my death',
 			},
 			{
 				id: 2,
-				title: 'Some guys are great in my life',
+				title: 'Ayush',
 				description: "I don't want to tell the name of guys",
 			}],
 			blurTypes: {

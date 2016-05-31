@@ -2,12 +2,53 @@ body {
 	background: #DADBD3;
 	margin: 0;
 	font-size: 16px;
-  font-weight: inherit;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
   color: rgba(0, 0, 0, 0.870588);
   line-height: 16px;
 }
 ::-webkit-input-placeholder {
 	color: #999;
+}
+.commentActions {
+  display: flex;
+  padding: 0 !important;
+  justify-content: flex-end;
+}
+.commentAuthorName {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.commentsSection {
+  height: 288px;
+}
+.creatorInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 9px;
+}
+.smokeSignalFields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.welcome-text {
+  font-size: 26px;
+  font-weight: 400;
+}
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 580px;
+}
+.smokeSignalContainer {
+  width: 100%;
 }
 .headline {
   font-size: 24px;
@@ -22,11 +63,16 @@ body {
 
 .appCont {
 	background: white;
+  display: flex;
   position: absolute;
+  max-height: 580px;
   left: 5em;
   right: 5em;
   top: 50px;
-  bottom: 50px;
+}
+.tabContainer {
+  height: 533px;
+  overflow: auto;
 }
 /*
 .smokeSignalsCont {
@@ -36,16 +82,23 @@ body {
 }
 */
 .smokeSignals {
-	width: 50%;
   box-sizing: border-box;
   border-right: 1px solid rgba(0,0,0,.08);
 }
 .smokeSignal {
 	background-color: #F7F9FA;
-	width: 50%;
+	width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.smokeSignalHeader {
+  height: 3em;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #DCDBD2;
+  background-color: #D4DBDA;
 }
 /*
 .listItem {
