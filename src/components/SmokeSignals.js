@@ -8,8 +8,13 @@ import Subheader from 'material-ui/Subheader';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
+import Sad from 'material-ui/svg-icons/social/sentiment-dissatisfied';
+import Happy from 'material-ui/svg-icons/social/sentiment-satisfied';
+
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ActionHome from 'material-ui/svg-icons/action/account-circle';
+
+import SmokeStore from '../stores/SmokeSignals'
 
 
 export default class SmokeSignals extends Component {
@@ -18,6 +23,7 @@ export default class SmokeSignals extends Component {
     super(props);
     this.state = {
       value: 'b',
+      forMeSignals: SmokeStore.getForMe()
     };
   }
 
@@ -27,8 +33,19 @@ export default class SmokeSignals extends Component {
     });
   };
 
+  componentDidMount = () => {
+		SmokeStore.listen(this.refreshSignals)
+  };
+
+  refreshSignals = () => {
+  	this.setState({
+  		forMeSignals: SmokeStore.getForMe()
+  	})
+  }
+
 
 	render() {
+		console.log(this.state.forMeSignals)
 		return (
 			<div style={{width: '40%'}} className="smokeSignals">
 				<Tabs
@@ -39,18 +56,16 @@ export default class SmokeSignals extends Component {
 	        	<div className="tabContainer">
 		        	<List>
 				        <Subheader>Today</Subheader>
-				        {this.props.smokeSignals && this.props.smokeSignals.map((smokeSignal, i) => {
-
+				        {this.state.forMeSignals && this.state.forMeSignals.map((signal, i) => {
+				        	let {message, userId} = signal._source
 				        	return (
 				        		<div key={i}>
 					        		<ListItem
-							          leftAvatar={<Avatar>S</Avatar>}
-							          onTouchTap={this.props.openSmokeSignal.bind(null, smokeSignal)}
-							          primaryText={smokeSignal.title}
+							          leftAvatar={<Avatar>{userId[0]}</Avatar>}
+							          onTouchTap={this.props.openSmokeSignal.bind(null, signal)}
+							          primaryText={userId}
 							          secondaryText={
-							            <p>
-							            	{smokeSignal.description}
-							            </p>
+							          	<p>{message}</p>
 							          }
 							          secondaryTextLines={1}
 							        />

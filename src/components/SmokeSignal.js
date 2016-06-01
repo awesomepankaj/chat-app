@@ -11,11 +11,24 @@ import IconButton from 'material-ui/IconButton/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import TextField from 'material-ui/TextField';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Badge from 'material-ui/Badge';
 import _ from 'lodash';
+
+import SmokeStore from '../stores/SmokeSignals'
 
 export default class SmokeSignal extends Component {
 
+	constructor(props) {
+		super(props)
+
+		this.state = {}
+	}
+
 	render() {
+
+
+		let {userId, message} = !_.isEmpty(this.props.selectedSmokeSignal) && this.props.selectedSmokeSignal._source
+
 		return (
 			<div className="smokeSignal">
 				{_.isEmpty(this.props.selectedSmokeSignal) && 
@@ -27,8 +40,8 @@ export default class SmokeSignal extends Component {
 					<div className="smokeSignalContainer">
 						<div className='smokeSignalHeader'>
 							<div className="creatorInfo">
-								<Avatar>P</Avatar>
-								<p style={{marginLeft: 9}}>{this.props.selectedSmokeSignal.title}</p>
+								<Avatar>{_.capitalize(userId[0])}</Avatar>
+								<p style={{marginLeft: 9}}>{_.capitalize(userId)}</p>
 							</div>
 							<div>
 								<IconMenu
@@ -45,36 +58,47 @@ export default class SmokeSignal extends Component {
 							</div>
 						</div>
 						<div className="smokeSignalFields">
-							<p>{this.props.selectedSmokeSignal.description}</p>
+							<p>{message}</p>
 							<p>
 				      	<span style={{color: lime500, marginRight: '20px'}}>#Call-in</span>
 				      	<span style={{color: blueA200}}>#Artha</span>
 				      </p>
 				      <div>
-				      	<FlatButton
-				      		backgroundColor="#E8EAF6"
-						      hoverColor="#8AA62F"
-						      icon={<Happy color={fullWhite} />}
+				      	<Badge
+						      badgeContent={9}
+						      className="badge"
+						      badgeStyle={{display: 'flex !important', top: 12, right: 12}}
 						      style={{marginRight: '180px'}}
-						    />
-				      	<FlatButton
-				      		backgroundColor="#E8EAF6"
-						      hoverColor="#8AA62F"
-						      icon={<Sad color={fullWhite} />}
+						      secondary={true}
+						    >
+					      	<IconButton tooltip="Happy">
+							    	<Happy />
+							    </IconButton>
+							  </Badge>
+							  <Badge
+						      badgeContent={2}
+						      className="badge"
+						      badgeStyle={{display: 'flex !important', top: 12, right: 12}}
 						      style={{marginLeft: '180px'}}
-						    />
+						      primary={true}
+						    >
+					      	<IconButton tooltip="Sad">
+							    	<Sad />
+							    </IconButton>
+							  </Badge>
 				      </div>
 						</div>
 						<div className="commentsSection">
-							<p style={{marginLeft: 70, marginTop: 60}}>Comments</p>
+							<p style={{marginLeft: 70}}>Comments</p>
 							<Divider inset={true}/>
 							<div className="commentsCont">
 								<Card style={{width: '50%', marginLeft: 20, marginTop: 20}}>
-					        <CardText style={{padding: 11, paddingBottom: 0}}>
+					        <CardText style={{padding: 11, paddingBottom: 0, fontSize: 14}}>
 					        	<Avatar style={{marginRight: 10}}>A</Avatar>
 					        	This is comment on life.
 					        </CardText>
 					        <CardActions className="commentActions">
+					        	<p style={{fontSize: 13}}>written by Pankaj</p>
 					        	<IconButton tooltip="Happy">
 					        		<Happy />
 					        	</IconButton>
