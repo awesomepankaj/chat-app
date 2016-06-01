@@ -27,7 +27,7 @@ export default class SmokeSignal extends Component {
 	render() {
 
 
-		let {userId, message} = !_.isEmpty(this.props.selectedSmokeSignal) && this.props.selectedSmokeSignal._source
+		let {userId, message, comments} = !_.isEmpty(this.props.selectedSmokeSignal) && this.props.selectedSmokeSignal._source
 
 		return (
 			<div className="smokeSignal">
@@ -71,8 +71,8 @@ export default class SmokeSignal extends Component {
 						      style={{marginRight: '180px'}}
 						      secondary={true}
 						    >
-					      	<IconButton tooltip="Happy">
-							    	<Happy />
+					      	<IconButton tooltip="Happy" style={{width: 70, height: 70}}>
+							    	<img className="action_img" src="../../public/images/happy_buddha.png"/>
 							    </IconButton>
 							  </Badge>
 							  <Badge
@@ -82,8 +82,8 @@ export default class SmokeSignal extends Component {
 						      style={{marginLeft: '180px'}}
 						      primary={true}
 						    >
-					      	<IconButton tooltip="Sad">
-							    	<Sad />
+					      	<IconButton tooltip="Normal" style={{width: 70, height: 70}}>
+							    	<img className="action_img" src="../../public/images/normal_buddha.png"/>
 							    </IconButton>
 							  </Badge>
 				      </div>
@@ -92,21 +92,25 @@ export default class SmokeSignal extends Component {
 							<p style={{marginLeft: 70}}>Comments</p>
 							<Divider inset={true}/>
 							<div className="commentsCont">
-								<Card style={{width: '50%', marginLeft: 20, marginTop: 20}}>
-					        <CardText style={{padding: 11, paddingBottom: 0, fontSize: 14}}>
-					        	<Avatar style={{marginRight: 10}}>A</Avatar>
-					        	This is comment on life.
-					        </CardText>
-					        <CardActions className="commentActions">
-					        	<p style={{fontSize: 13}}>written by Pankaj</p>
-					        	<IconButton tooltip="Happy">
-					        		<Happy />
-					        	</IconButton>
-					        	<IconButton tooltip="Sad">
-					        		<Sad />
-					        	</IconButton>
-					        </CardActions>
-					      </Card>
+								{!_.isEmpty(comments) && comments.map((comment) => {
+									return (
+										<Card style={{width: '50%', marginLeft: 20, marginTop: 20}}>
+							        <CardText style={{padding: 11, paddingBottom: 0, fontSize: 14}}>
+							        	<Avatar style={{marginRight: 10}}>A</Avatar>
+							        	This is comment on life.
+							        </CardText>
+							        <CardActions className="commentActions">
+							        	<p style={{fontSize: 13}}>written by Pankaj</p>
+							        	<IconButton tooltip="Happy">
+							        		<img src="../../../public/images/happy_budda.png" />
+							        	</IconButton>
+							        	<IconButton tooltip="Sad">
+							        		<Sad />
+							        	</IconButton>
+							        </CardActions>
+							      </Card>
+									)
+								})} 
 							</div>
 						</div>
 						<div className="createComment">
