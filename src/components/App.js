@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import SmokeSignals from './SmokeSignals'
 import SmokeSignal from './SmokeSignal'
+import CreateSmokeSignal from './CreateSmokeSignal'
 
 
 export class Home extends Component {

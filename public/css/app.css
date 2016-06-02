@@ -13,7 +13,15 @@ body {
 .action_img {
   width: 35px;
 }
-
+.signalTypes {
+  display: flex;
+  flex-flow: row wrap;
+}
+.signalType {
+  width: 47%;
+  padding: 10px;
+  cursor: pointer;
+}
 .commentActions {
   display: flex;
   padding: 0 !important;

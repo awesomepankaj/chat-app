@@ -7,6 +7,7 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Dialog from 'material-ui/Dialog';
 
 import Sad from 'material-ui/svg-icons/social/sentiment-dissatisfied';
 import Happy from 'material-ui/svg-icons/social/sentiment-satisfied';
@@ -15,6 +16,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import ActionHome from 'material-ui/svg-icons/action/account-circle';
 
 import SmokeStore from '../stores/SmokeSignals'
+import CreateSMView from './CreateSmokeSignal'
 
 
 export default class SmokeSignals extends Component {
@@ -23,7 +25,8 @@ export default class SmokeSignals extends Component {
     super(props);
     this.state = {
       value: 'b',
-      forMeSignals: SmokeStore.getForMe()
+      forMeSignals: SmokeStore.getForMe(),
+      openDialog: false
     };
   }
 
@@ -145,12 +148,32 @@ export default class SmokeSignals extends Component {
 				    </div>
 	        </Tab>
 	      </Tabs>		  
-	      <FloatingActionButton style={{position: 'absolute', left: '370px', bottom: '25px'}}>
+	      <FloatingActionButton style={{position: 'absolute', left: '370px', bottom: '25px'}} onTouchTap={this.openSMDialog}>
       		<ContentAdd />
     		</FloatingActionButton>
+    		<Dialog
+          modal={false}
+          open={this.state.openDialog}
+          onRequestClose={this.closeDialog}
+          contentStyle={{width: '80%', maxWidth: '100%'}}
+        >
+        	<CreateSMView closeDialog={this.closeDialog}/>
+        </Dialog>
 			</div>
 		)
 	};
+
+	closeDialog = () => {
+		this.setState({
+			openDialog: false
+		})
+	}
+
+	openSMDialog = () => {
+		this.setState({
+			openDialog: true	
+		})
+	}
 
 	onClickItem(smokeSignal) {
 		this.props.openSmokeSignal(smokeSignal)
